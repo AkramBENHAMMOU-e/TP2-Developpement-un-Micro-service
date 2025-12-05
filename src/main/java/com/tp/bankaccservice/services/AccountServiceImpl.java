@@ -9,9 +9,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.UUID;
-
 @Service @Transactional @AllArgsConstructor
 public class AccountServiceImpl implements AccountService {
     BankAccountRepository bankAccountRepository;
@@ -22,5 +19,20 @@ public class AccountServiceImpl implements AccountService {
         BankAccount saved = bankAccountRepository.save(bankAccount);
        BankAccountResponseDTO bankAccountResponseDTO = accountMapper.fromBankAccount(saved);
         return bankAccountResponseDTO ;
+    }
+
+    @Override
+    public BankAccountResponseDTO updateAccount(String id, BankAccountRequestDTO bankAccountDTO) {
+        BankAccount bankAccount = bankAccountRepository.findById(id).orElseThrow(() -> new RuntimeException("Account not found"));
+        if (bankAccountDTO.getBalance() != null) bankAccount.setBalance(bankAccountDTO.getBalance());
+        if (bankAccountDTO.getType() != null) bankAccount.setType(bankAccountDTO.getType());
+        if (bankAccountDTO.getCurrency() != null) bankAccount.setCurrency(bankAccountDTO.getCurrency());
+        BankAccount saved = bankAccountRepository.save(bankAccount);
+        return accountMapper.fromBankAccount(saved);
+    }
+
+    @Override
+    public void deleteAccount(String id) {
+        bankAccountRepository.deleteById(id);
     }
 }
