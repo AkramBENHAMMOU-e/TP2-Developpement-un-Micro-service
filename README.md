@@ -1,6 +1,6 @@
 # Bank Account Service – Rapport
 
-Service Spring Boot pour la gestion de comptes bancaires avec API REST, GraphQL, Swagger et base H2. Les captures se trouvent dans `screens/`.
+Service Spring Boot pour la gestion de comptes bancaires avec API REST, GraphQL, Swagger et base H2.
 
 ## Fonctionnalités
 - CRUD des comptes bancaires (REST et GraphQL)
@@ -70,14 +70,26 @@ com/tp/bankaccservice/
 ```
 
 ## Tester les endpoints
-- `screens/image7.png` : requête GraphQL `accountList` dans GraphiQL, avec la liste des comptes (id, balance, currency, type, createdAt).
-- `screens/image8.png` : requête GraphQL `bankAccountById` dans GraphiQL, filtrée par id, retournant id, balance et type.
-- `screens/image9.png` : mutation GraphQL `addAccount` créant un compte SAVING_ACCOUNT (balance 1200, currency MAD) et renvoyant l’objet créé avec createdAt.
-- `screens/image.png` : mutation GraphQL `updateAccount` mettant à jour un compte (balance 2000, type CURRENT_ACCOUNT, currency MAD) et renvoyant les champs id/balance/type/currency.
-- `screens/image10.png` : mutation GraphQL `deleteAccount` supprimant un compte par id et retournant `true`.
-- `screens/image1.png` : GET REST `GET /api/bankAccounts` depuis le navigateur, affichant la liste brute des comptes en JSON.
-- `screens/image2.png` : GET REST `GET /api/bankAccounts/{id}` avec un id donné, affichant un compte en JSON.
-- `screens/image3.png` : vue Swagger UI listant les endpoints REST du contrôleur `account-rest-controller` (GET/POST/PUT/DELETE).
-- `screens/image4.png` : exécution DELETE dans Swagger UI (`/api/bankAccounts/{id}`) avec l’URL et le curl généré, réponse 200.
-- `screens/image5.png` : formulaire Swagger UI pour PUT `/api/bankAccounts/{id}`, avec path param et body JSON.
-- `screens/image6.png` : exécution PUT dans Swagger UI montrant le curl généré, l’URL appelée et la réponse 200 avec l’objet mis à jour.
+- GET REST `GET /api/bankAccounts` depuis le navigateur, affichant la liste brute des comptes en JSON.
+  ![REST list accounts](screens/image1.png)  
+-  GET REST `GET /api/bankAccounts/{id}` avec un id donné, affichant un compte en JSON.
+  ![REST get by id](screens/image2.png) 
+-  vue Swagger UI listant les endpoints REST du contrôleur `account-rest-controller` (GET/POST/PUT/DELETE).
+   ![Swagger endpoints](screens/image3.png)
+-  exécution DELETE dans Swagger UI (`/api/bankAccounts/{id}`) avec l’URL et le curl généré, réponse 200.
+  ![Swagger delete](screens/image4.png)
+-  formulaire Swagger UI pour PUT `/api/bankAccounts/{id}`, avec path param et body JSON.
+  ![Swagger put form](screens/image5.png)
+- exécution PUT dans Swagger UI montrant le curl généré, l’URL appelée et la réponse 200 avec l’objet mis à jour.
+  ![Swagger put execute](screens/image6.png) 
+- requête GraphQL `accountList` dans GraphiQL, avec la liste des comptes (id, balance, currency, type, createdAt).
+  ![GraphQL accountList](screens/image7.png) 
+- requête GraphQL `bankAccountById` dans GraphiQL, filtrée par id, retournant id, balance et type.
+  ![GraphQL bankAccountById](screens/image8.png) 
+- mutation GraphQL `addAccount` créant un compte SAVING_ACCOUNT (balance 1200, currency MAD) et renvoyant l’objet créé avec createdAt.
+  
+  ![GraphQL addAccount](screens/image9.png) 
+- mutation GraphQL `updateAccount` mettant à jour un compte (balance 2000, type CURRENT_ACCOUNT, currency MAD) et renvoyant les champs id/balance/type/currency.
+  ![GraphQL updateAccount](screens/image.png) 
+- mutation GraphQL `deleteAccount` supprimant un compte par id et retournant `true`.
+  ![GraphQL deleteAccount](screens/image10.png)
